@@ -18,6 +18,12 @@ const browserSync = BrowserSync.create();
 const hugoBin = `./bin/hugo.${process.platform === "win32" ? "exe" : process.platform}`;
 const defaultArgs = ["-d", "../dist", "-s", "site"];
 
+var sassPaths = [
+  'node_modules/foundation-sites/scss',
+  'node_modules/font-awesome/scss',
+  'node_modules/foundation-font-awesome-buttons/src',
+];
+
 if (process.env.DEBUG) {
   defaultArgs.unshift("--debug")
 }
@@ -40,7 +46,9 @@ gulp.task("css", () => (
 
 gulp.task("sass", () => (
   gulp.src("./src/scss/app.scss")
-    .pipe(sass())
+    .pipe(sass({
+      includePaths: sassPaths,
+    }))
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream())
 ));
@@ -86,11 +94,11 @@ gulp.task("server", ["hugo", "sass", "css", "cms-assets", "js", "svg"], () => {
       baseDir: "./dist"
     }
   });
-  gulp.watch("./src/js/**/*.js", ["js"]);
-  gulp.watch("./src/css/**/*.css", ["css"]);
-  gulp.watch("./src/scss/**/*.scss", ["sass"]);
-  gulp.watch("./site/static/img/icons-*.svg", ["svg"]);
-  gulp.watch("./site/**/*", ["hugo"]);
+  gulp.watch("src/js/**/*.js", ["js"]);
+  gulp.watch("src/css/**/*.css", ["css"]);
+  gulp.watch("src/scss/**/*.scss", ["sass"]);
+  gulp.watch("site/static/img/icons-*.svg", ["svg"]);
+  gulp.watch("site/**/*", ["hugo"]);
 });
 
 function buildSite(cb, options) {

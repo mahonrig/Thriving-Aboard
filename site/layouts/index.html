@@ -1,13 +1,9 @@
-{{ define "main" }}
+{{ define "main"}}
 
-{{ partial "jumbotron" (dict "imageUrl" .Params.image "title" .Title "subtitle" .Params.subtitle) }}
+{{ partial "header" . }}
 
-{{ partial "short-text" .Params.blurb}}
+<h1 class="centerx">Latest Posts</h1>
 
-{{ partial "2-up" .Params }}
-
-{{ partial "text-and-image" (dict "heading" .Params.values.heading "text" .Params.values.text "buttonText" "Read more" "buttonLink" "/values") }}
-
-{{ partial "blog" . }}
+{{ partial "post-list-4" . }}
 
 {{ end }}

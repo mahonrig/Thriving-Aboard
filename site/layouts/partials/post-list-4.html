@@ -1,0 +1,15 @@
+<div class="posts-container">
+    <div class="posts-list">
+        {{ range first 4 .Data.Pages.ByDate.Reverse }}
+        <div class="post">
+            <a href="{{ .Permalink }}">            
+            <div class="card post-card" style='background-image: url("/img/{{ .Params.image }}");'>
+              <span class="post-title">{{ .Title }}</span>
+              <span class="post-date">{{ .Date.Format "2 Jan 06" }}</span>
+            </div>
+            </a>                      
+        </div>
+        {{ end }}        
+        <a href="/post/" class="button ffab fa-arrow-right">See All</a>
+    </div>
+</div>

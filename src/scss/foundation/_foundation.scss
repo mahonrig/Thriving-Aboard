@@ -26,16 +26,20 @@
 @import 'node_modules/foundation-sites/scss/foundation';
 @import 'node_modules/motion-ui/src/motion-ui';
 
+// Import Foundation Font Awesome Buttons
+@import 'font-awesome';
+@import 'ffab';
+
 @include foundation-global-styles;
 
 // This is the default Flexbox Grid
 // http://foundation.zurb.com/sites/docs/flex-grid.html
-// @include foundation-flex-grid;
-// @include foundation-flex-classes;
+@include foundation-flex-grid;
+@include foundation-flex-classes;
 
 // Uncomment to use the XY Grid
 // http://foundation.zurb.com/sites/docs/xy-grid.html
- @include foundation-xy-grid-classes;
+@include foundation-xy-grid-classes;
 
 // Uncomment to use the standard grid
 // http://foundation.zurb.com/sites/docs/grid.html
@@ -81,3 +85,5 @@
 // Comment out if you don't want to use Foundation's Motion UI plugin
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+@include ffab-everything;

@@ -1,0 +1,13 @@
+<header>
+        <nav>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/post/">Posts</a></li>
+              <li><a href="/about/">About</a></li>        
+            </ul>        
+        </nav>
+        <div class="header-image" style='background-image: url("/img/{{ .Params.image }}");'>
+            <div><h1>{{ .Title }}</h1></div>
+        </div>
+    <div class="header-subtitle"><p>{{ .Params.subtitle }}</p></div>
+</header>

@@ -3,19 +3,99 @@
 // --------------------------------------------------
 
 header {
-  @include grid-row;
-  background-color: $light-gray;
-
   nav {
-    @include grid-column;
+    @include xy-grid();
+    @include flex-align($x: center);
+    background-color: $primary-color;  
+    @include breakpoint(medium){
+      background-color: $white;
+    }
+    ul {
+      @include xy-cell();
+      @include breakpoint(medium){
+        @include xy-cell(8);
+        background-color: $primary-color;
+        position: absolute;
+        border-radius: 0 0 10px 10px;  
+      }
+      list-style-type: none;
+      margin-bottom: 0;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      text-align: center;
+      li {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        display: inline;
+        a {
+          color: #E8E8E8;
+         }
+      }
+    }
+  }
+
+  .header-image {
+    @include flex;
+    @include flex-align($x: center, $y: bottom);
+    min-height: 300px;
+    color: $white;
+    background-size: cover;
+    background-position: center;
+    @include breakpoint(medium){
+      min-height: 400px;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+  }
+
+  .header-subtitle {
+    text-align: center;
   }
 }
 
-footer {
-  @include grid-row;
-  background-color: $light-gray;
+.posts-container {
+  @include xy-grid-container;
+}
 
-  nav {
-    @include grid-column;
+.posts-list {
+  @include xy-grid;
+  @include flex-align($x: center);  
+}
+
+.post {
+  @include xy-cell(12);
+  @include breakpoint(medium){
+    @include xy-cell(6);
   }
+  position: relative;
+  .post-title {
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    color: $white;
+  }
+  .post-date {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    color: $white;
+  }
+
+  .post-card {
+    min-height: 200px;
+    color: $white;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.centerx {
+  @include flex;
+  @include flex-align($x: center);
+}
+
+.triangle-right {
+  @include css-triangle(5px, $white, right);
+  display: inline;
 }
